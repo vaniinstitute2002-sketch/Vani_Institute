@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vani Institute Login</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.8)),
+    url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1470&auto=format&fit=crop');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+/* Animated background circles */
+
+.circle{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(20px);
+    opacity:0.35;
+    animation:float 6s infinite ease-in-out;
+}
+
+.circle1{
+    width:220px;
+    height:220px;
+    background:#ff7b00;
+    top:-60px;
+    left:-60px;
+}
+
+.circle2{
+    width:250px;
+    height:250px;
+    background:#0066ff;
+    bottom:-80px;
+    right:-80px;
+    animation-delay:2s;
+}
+
+@keyframes float{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(20px);}
+    100%{transform:translateY(0px);}
+}
+
+.login-container{
+    width:950px;
+    max-width:95%;
+    min-height:580px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.2);
+    backdrop-filter:blur(15px);
+    border-radius:25px;
+    display:flex;
+    overflow:hidden;
+    box-shadow:0 10px 40px rgba(0,0,0,0.4);
+    position:relative;
+}
+
+/* LEFT PANEL */
+
+.left-panel{
+    width:45%;
+    background:linear-gradient(135deg,#005eff,#002f7c);
+    padding:40px;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+.logo{
+    width:180px;
+    margin-bottom:25px;
+    filter:drop-shadow(0 0 10px rgba(255,255,255,0.3));
+}
+
+.left-panel h1{
+    font-size:38px;
+    font-weight:700;
+    text-align:center;
+}
+
+.left-panel p{
+    margin-top:15px;
+    text-align:center;
+    line-height:1.8;
+    color:#e8e8e8;
+}
+
+/* RIGHT PANEL */
+
+.right-panel{
+    width:55%;
+    padding:50px 45px;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.heading{
+    font-size:34px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.sub-text{
+    color:#d7d7d7;
+    margin-bottom:30px;
+}
+
+.role-switch{
+    display:flex;
+    gap:15px;
+    margin-bottom:30px;
+}
+
+.role-btn{
+    flex:1;
+    padding:14px;
+    border:none;
+    border-radius:14px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+    background:rgba(255,255,255,0.1);
+    color:white;
+    border:1px solid rgba(255,255,255,0.15);
+}
+
+.role-btn.active{
+    background:linear-gradient(135deg,#ff7b00,#ff9a2f);
+    box-shadow:0 5px 20px rgba(255,123,0,0.4);
+}
+
+.input-box{
+    margin-bottom:22px;
+}
+
+.input-box label{
+    display:block;
+    margin-bottom:8px;
+    font-size:14px;
+    color:#ddd;
+}
+
+.input-box input{
+    width:100%;
+    padding:16px;
+    border:none;
+    outline:none;
+    border-radius:14px;
+    background:rgba(255,255,255,0.1);
+    color:white;
+    font-size:15px;
+    border:1px solid rgba(255,255,255,0.15);
+    transition:0.3s;
+}
+
+.input-box input:focus{
+    border-color:#ff7b00;
+    box-shadow:0 0 15px rgba(255,123,0,0.3);
+}
+
+.input-box input::placeholder{
+    color:#cfcfcf;
+}
+
+.extra{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+    font-size:14px;
+}
+
+.extra a{
+    color:#ff9a2f;
+    text-decoration:none;
+}
+
+.login-btn{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(135deg,#ff7b00,#ff9a2f);
+    color:white;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 6px 25px rgba(255,123,0,0.4);
+}
+
+.login-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 30px rgba(255,123,0,0.55);
+}
+
+.bottom-text{
+    margin-top:25px;
+    text-align:center;
+    color:#ddd;
+    font-size:14px;
+}
+
+.bottom-text a{
+    color:#4da3ff;
+    text-decoration:none;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px){
+
+    .login-container{
+        flex-direction:column;
+        height:auto;
+    }
+
+    .left-panel,
+    .right-panel{
+        width:100%;
+    }
+
+    .left-panel{
+        padding:30px 20px;
+    }
+
+    .right-panel{
+        padding:35px 25px;
+    }
+
+    .heading{
+        font-size:28px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="circle circle1"></div>
+<div class="circle circle2"></div>
+
+<div class="login-container">
+
+    <!-- LEFT -->
+    <div class="left-panel">
+
+        <img src="vanilogo.JPEG" class="logo" id="logo">
+
+        <h1>VANI INSTITUTE</h1>
+
+        <p>
+            Smart Institute Management System<br>
+            
+            
+        </p>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right-panel">
+
+        <div class="heading">Welcome Back 👋</div>
+
+        <div class="sub-text">
+            Login to continue into your dashboard
+        </div>
+
+        <div class="role-switch">
+            <button class="role-btn active" id="adminBtn">
+                Admin Login
+            </button>
+
+            <button class="role-btn" id="studentBtn">
+                Student Login
+            </button>
+        </div>
+
+        <div class="input-box">
+            <label id="userLabel">Admin ID</label>
+            <input type="text" id="username" placeholder="Enter Admin ID">
+        </div>
+
+        <div class="input-box">
+            <label>Password</label>
+            <input type="password" placeholder="Enter Password">
+        </div>
+
+        <div class="extra">
+            <label>
+                <input type="checkbox">
+                Remember Me
+            </label>
+
+            <a href="#">Forgot Password?</a>
+        </div>
+
+        <button class="login-btn" onclick="login()">
+            Login Now
+        </button>
+
+        <div class="bottom-text">
+            Powered By <a href="#">Vani Institute ERP</a>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const adminBtn = document.getElementById("adminBtn");
+const studentBtn = document.getElementById("studentBtn");
+const userLabel = document.getElementById("userLabel");
+const username = document.getElementById("username");
+
+adminBtn.addEventListener("click",()=>{
+
+    adminBtn.classList.add("active");
+    studentBtn.classList.remove("active");
+
+    userLabel.innerText = "Admin ID";
+    username.placeholder = "Enter Admin ID";
+
+});
+
+studentBtn.addEventListener("click",()=>{
+
+    studentBtn.classList.add("active");
+    adminBtn.classList.remove("active");
+
+    userLabel.innerText = "Student I.D";
+    username.placeholder = "Enter I.D";
+
+});
+
+function login(){
+
+    if(adminBtn.classList.contains("active")){
+        alert("Admin Login Successful!");
+    }
+    else{
+        alert("Student Login Successful!");
+    }
+
+}
+
+</script>
+
+</body>
+</html>

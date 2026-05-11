@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Institute App</title>
+
+<style>
+body {
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:#f4f7fb;
+}
+
+/* Layout */
+.container {
+  display:flex;
+}
+
+/* Sidebar */
+.sidebar {
+  width:240px;
+  height:100vh;
+  background: linear-gradient(180deg,#1e3c72,#2a5298);
+  color:white;
+  padding:20px;
+}
+
+/* Logo */
+.logo-box {
+  text-align:center;
+  margin-bottom:30px;
+}
+.logo-box img {
+  width:80px;
+}
+
+/* Links */
+.sidebar a {
+  display:block;
+  color:white;
+  padding:12px;
+  margin:8px 0;
+  text-decoration:none;
+  border-radius:8px;
+}
+.sidebar a:hover {
+  background:rgba(255,255,255,0.2);
+}
+
+/* Content */
+.content {
+  flex:1;
+  padding:20px;
+}
+
+/* Cards */
+.card {
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 5px 10px rgba(0,0,0,0.1);
+  margin-bottom:20px;
+}
+
+/* Button */
+button {
+  padding:10px 15px;
+  border:none;
+  border-radius:8px;
+  background:linear-gradient(45deg,#ff7e00,#ff3d00);
+  color:white;
+  cursor:pointer;
+}
+
+/* Table */
+table {
+  width:100%;
+  border-collapse:collapse;
+}
+th {
+  background:#2a5298;
+  color:white;
+  padding:10px;
+}
+td {
+  padding:10px;
+  text-align:center;
+}
+
+/* Login */
+.login {
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#2c3e50;
+}
+.login-box {
+  background:white;
+  padding:30px;
+  width:300px;
+  border-radius:10px;
+}
+input, select, textarea {
+  width:100%;
+  padding:10px;
+  margin:10px 0;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="loginPage" class="login">
+  <div class="login-box">
+    <h2>Login</h2>
+    <input placeholder="Email">
+    <input type="password" placeholder="Password">
+
+    <select id="role">
+      <option value="user">User</option>
+      <option value="admin">Admin</option>
+    </select>
+
+    <button onclick="login()">Login</button>
+  </div>
+</div>
+
+<!-- USER PANEL -->
+<div id="userPanel" style="display:none;">
+<div class="container">
+
+<div class="sidebar">
+  <div class="logo-box">
+    <img src="vanilogo.jpeg">
+  </div>
+
+  <a onclick="userPage('profile')">Profile</a>
+  <a onclick="userPage('marks')">Marks</a>
+  <a onclick="userPage('attendance')">Attendance</a>
+  <a onclick="userPage('fees')">Fees</a>
+  <a onclick="userPage('messages')">Messages</a>
+</div>
+
+<div class="content" id="userContent"></div>
+
+</div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel" style="display:none;">
+<div class="container">
+
+<div class="sidebar">
+  <div class="logo-box">
+    <img src="vanilogo.jpeg">
+  </div>
+
+  <a onclick="adminPage('classes')">Classes</a>
+  <a onclick="adminPage('add')">Add Student</a>
+  <a onclick="adminPage('msg')">Send Message</a>
+</div>
+
+<div class="content" id="adminContent"></div>
+
+</div>
+</div>
+
+<script>
+
+/* LOGIN */
+function login(){
+  let role=document.getElementById("role").value;
+  document.getElementById("loginPage").style.display="none";
+
+  if(role==="admin"){
+    document.getElementById("adminPanel").style.display="block";
+    adminPage('classes');
+  }else{
+    document.getElementById("userPanel").style.display="block";
+    userPage('profile');
+  }
+}
+
+/* USER PAGES */
+function userPage(page){
+
+  let content=document.getElementById("userContent");
+
+  if(page==="profile"){
+    content.innerHTML=`
+    <div class="card">
+    <h2>Profile</h2>
+    <p>Name: John</p>
+    <p>Father Name: Doe</p>
+    <p>Phone: 9999999999</p>
+    <p>Class: 10</p>
+    </div>`;
+  }
+
+  if(page==="marks"){
+    content.innerHTML=`
+    <div class="card">
+    <h2>Marks</h2>
+    <table>
+    <tr><th>Date</th><th>Subject</th><th>Marks</th></tr>
+    <tr><td>1-5-26</td><td>Math</td><td>90</td></tr>
+    </table>
+    </div>`;
+  }
+
+  if(page==="attendance"){
+    content.innerHTML=`
+    <div class="card">
+    <h2>Attendance</h2>
+    <table>
+    <tr><th>Date</th><th>Status</th></tr>
+    <tr><td>1-5-26</td><td>Present</td></tr>
+    </table>
+    </div>`;
+  }
+
+  if(page==="fees"){
+    content.innerHTML=`
+    <div class="card">
+    <h2>Fees</h2>
+    <p>Paid: 5 months</p>
+    <p>Pending: 2 months</p>
+    </div>`;
+  }
+
+  if(page==="messages"){
+    content.innerHTML=`
+    <div class="card">
+    <h2>Messages</h2>
+    <p>Admin: Exam tomorrow</p>
+    </div>`;
+  }
+}
+
+/* ADMIN PAGES */
+function adminPage(page){
+
+  let content=document.getElementById("adminContent");
+
+  if(page==="classes"){
+    content.innerHTML=`
+    <div class="card">
+    <h2>Select Class</h2>
+    <button onclick="openClass()">Class 1</button>
+    <button onclick="openClass()">Class 2</button>
+    </div>`;
+  }
+
+  if(page==="add"){
+    content.innerHTML=`
+    <div class="card">
+    <h2>Add Student</h2>
+    <input placeholder="Name">
+    <input placeholder="Class">
+    <button>Add</button>
+    </div>`;
+  }
+
+  if(page==="msg"){
+    content.innerHTML=`
+    <div class="card">
+    <h2>Send Message</h2>
+    <textarea placeholder="Message"></textarea>
+    <button>Send</button>
+    </div>`;
+  }
+}
+
+function openClass(){
+  adminContent.innerHTML=`
+  <div class="card">
+  <h2>Students</h2>
+  <table>
+  <tr><th>Name</th><th>Action</th></tr>
+  <tr><td>Rahul</td><td>Edit</td></tr>
+  </table>
+  </div>`;
+}
+
+</script>
+
+</body>
+</html>
