@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Institute Admin Dashboard</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    display:flex;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:270px;
+    height:100vh;
+    background:linear-gradient(180deg,#0b4ea2,#0f172a);
+    color:white;
+    position:fixed;
+    left:0;
+    top:0;
+    padding:20px;
+}
+
+.logo-box{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:40px;
+}
+
+.logo{
+    width:60px;
+    height:60px;
+    border-radius:15px;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#0b4ea2;
+    font-size:28px;
+    font-weight:700;
+}
+
+.logo-text h2{
+    font-size:22px;
+}
+
+.logo-text p{
+    color:#cbd5e1;
+    font-size:13px;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:white;
+    padding:14px 16px;
+    border-radius:12px;
+    transition:.3s;
+    font-size:15px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.menu a:hover,
+.menu .active{
+    background:#ff8c00;
+}
+
+/* MAIN */
+
+.main{
+    margin-left:270px;
+    width:100%;
+    padding:25px;
+}
+
+/* TOPBAR */
+
+.topbar{
+    background:white;
+    border-radius:20px;
+    padding:18px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+.search-box input{
+    width:300px;
+    padding:12px 15px;
+    border:none;
+    background:#f1f5f9;
+    border-radius:10px;
+    outline:none;
+}
+
+.admin-profile{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.admin-profile img{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+}
+
+.admin-profile h4{
+    color:#0f172a;
+}
+
+.admin-profile p{
+    font-size:12px;
+    color:gray;
+}
+
+/* CARDS */
+
+.cards{
+    margin-top:30px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    padding:25px;
+    border-radius:20px;
+    color:white;
+    position:relative;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card h3{
+    font-size:18px;
+    margin-bottom:10px;
+}
+
+.card h1{
+    font-size:36px;
+}
+
+.card p{
+    margin-top:8px;
+    font-size:13px;
+}
+
+.card1{
+    background:linear-gradient(135deg,#0b4ea2,#2563eb);
+}
+
+.card2{
+    background:linear-gradient(135deg,#ff8c00,#ffb347);
+}
+
+.card3{
+    background:linear-gradient(135deg,#0f172a,#334155);
+}
+
+.card4{
+    background:linear-gradient(135deg,#16a34a,#22c55e);
+}
+
+/* TABLE */
+
+.table-section{
+    margin-top:35px;
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+.table-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.table-header button{
+    background:#ff8c00;
+    color:white;
+    border:none;
+    padding:12px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table th{
+    background:#0b4ea2;
+    color:white;
+    padding:14px;
+    text-align:left;
+}
+
+table td{
+    padding:14px;
+    border-bottom:1px solid #e2e8f0;
+}
+
+.status{
+    padding:6px 12px;
+    border-radius:30px;
+    font-size:12px;
+    color:white;
+    font-weight:600;
+}
+
+.active-status{
+    background:#22c55e;
+}
+
+.pending-status{
+    background:#f59e0b;
+}
+
+/* NOTICE */
+
+.bottom-grid{
+    margin-top:30px;
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
+}
+
+.notice-board,
+.activity-box{
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+.notice{
+    padding:15px;
+    background:#f8fafc;
+    border-left:5px solid #ff8c00;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+.notice h4{
+    margin-bottom:5px;
+}
+
+.activity{
+    display:flex;
+    gap:12px;
+    margin-top:18px;
+}
+
+.dot{
+    width:12px;
+    height:12px;
+    background:#0b4ea2;
+    border-radius:50%;
+    margin-top:6px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .sidebar{
+        width:80px;
+    }
+
+    .sidebar .logo-text,
+    .sidebar .menu span{
+        display:none;
+    }
+
+    .main{
+        margin-left:80px;
+    }
+
+    .bottom-grid{
+        grid-template-columns:1fr;
+    }
+
+    .search-box input{
+        width:180px;
+    }
+}
+
+@media(max-width:600px){
+
+    .topbar{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .search-box input{
+        width:100%;
+    }
+
+    .table-section{
+        overflow:auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+    <div class="logo-box">
+        <div class="logo">IM</div>
+
+        <div class="logo-text">
+            <h2>Institute</h2>
+            <p>Management Panel</p>
+        </div>
+    </div>
+
+    <div class="menu">
+        <a href="#" class="active">🏠 <span>Dashboard</span></a>
+        <a href="#">🎓 <span>Students</span></a>
+        <a href="#">👨‍🏫 <span>Teachers</span></a>
+        <a href="#">📚 <span>Courses</span></a>
+        <a href="#">💰 <span>Fees</span></a>
+        <a href="#">📅 <span>Attendance</span></a>
+        <a href="#">📝 <span>Exams</span></a>
+        <a href="#">🖼️ <span>Gallery</span></a>
+        <a href="#">⚙️ <span>Settings</span></a>
+        <a href="#">🚪 <span>Logout</span></a>
+    </div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+
+        <div class="search-box">
+            <input type="text" placeholder="Search here...">
+        </div>
+
+        <div class="admin-profile">
+            <img src="https://i.imgur.com/6VBx3io.png">
+
+            <div>
+                <h4>Admin</h4>
+                <p>Institute Administrator</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- CARDS -->
+
+    <div class="cards">
+
+        <div class="card card1">
+            <h3>Total Students</h3>
+            <h1 id="students">0</h1>
+            <p>Enrolled this year</p>
+        </div>
+
+        <div class="card card2">
+            <h3>Total Teachers</h3>
+            <h1 id="teachers">0</h1>
+            <p>Active faculty members</p>
+        </div>
+
+        <div class="card card3">
+            <h3>Total Courses</h3>
+            <h1 id="courses">0</h1>
+            <p>Available programs</p>
+        </div>
+
+        <div class="card card4">
+            <h3>Total Revenue</h3>
+            <h1 id="revenue">0</h1>
+            <p>Monthly income</p>
+        </div>
+
+    </div>
+
+    <!-- TABLE -->
+
+    <div class="table-section">
+
+        <div class="table-header">
+            <h2>Recent Student Admissions</h2>
+            <button>Add Student</button>
+        </div>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Status</th>
+            </tr>
+
+            <tr>
+                <td>#101</td>
+                <td>Ahmed Khan</td>
+                <td>Web Development</td>
+                <td><span class="status active-status">Active</span></td>
+            </tr>
+
+            <tr>
+                <td>#102</td>
+                <td>Sana Fatima</td>
+                <td>Graphic Designing</td>
+                <td><span class="status pending-status">Pending</span></td>
+            </tr>
+
+            <tr>
+                <td>#103</td>
+                <td>Mohammed Ali</td>
+                <td>Digital Marketing</td>
+                <td><span class="status active-status">Active</span></td>
+            </tr>
+
+            <tr>
+                <td>#104</td>
+                <td>Ayesha Noor</td>
+                <td>Python Full Stack</td>
+                <td><span class="status active-status">Active</span></td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <!-- BOTTOM -->
+
+    <div class="bottom-grid">
+
+        <div class="notice-board">
+
+            <h2>Notice Board</h2>
+
+            <div class="notice">
+                <h4>Mid Exams Start</h4>
+                <p>Mid semester exams will start from 15th June.</p>
+            </div>
+
+            <div class="notice">
+                <h4>Fee Submission</h4>
+                <p>Last date for fee payment is 10th June.</p>
+            </div>
+
+            <div class="notice">
+                <h4>Holiday Notice</h4>
+                <p>Institute will remain closed on Sunday.</p>
+            </div>
+
+        </div>
+
+        <div class="activity-box">
+
+            <h2>Recent Activity</h2>
+
+            <div class="activity">
+                <div class="dot"></div>
+                <p>New student registered</p>
+            </div>
+
+            <div class="activity">
+                <div class="dot"></div>
+                <p>Fee payment received</p>
+            </div>
+
+            <div class="activity">
+                <div class="dot"></div>
+                <p>New course added</p>
+            </div>
+
+            <div class="activity">
+                <div class="dot"></div>
+                <p>Teacher updated attendance</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function counter(id,start,end,speed){
+    let obj=document.getElementById(id);
+    let current=start;
+
+    let timer=setInterval(()=>{
+        current++;
+        obj.innerHTML=current;
+
+        if(current>=end){
+            clearInterval(timer);
+        }
+
+    },speed);
+}
+
+counter("students",0,1250,2);
+counter("teachers",0,85,20);
+counter("courses",0,32,40);
+counter("revenue",0,850,2);
+
+</script>
+
+</body>
+</html>
