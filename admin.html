@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Institute Admin Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Institute Management Admin Dashboard</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -17,7 +17,7 @@
 }
 
 body{
-    background:#f4f7fb;
+    background:#f1f5f9;
     display:flex;
 }
 
@@ -32,58 +32,42 @@ body{
     left:0;
     top:0;
     padding:20px;
-}
-
-.logo-box{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    margin-bottom:40px;
+    overflow:auto;
 }
 
 .logo{
-    width:60px;
-    height:60px;
-    border-radius:15px;
-    background:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#0b4ea2;
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.logo h1{
+    color:#ff9800;
     font-size:28px;
-    font-weight:700;
 }
 
-.logo-text h2{
-    font-size:22px;
-}
-
-.logo-text p{
-    color:#cbd5e1;
+.logo p{
     font-size:13px;
+    color:#cbd5e1;
 }
 
 .menu{
     display:flex;
     flex-direction:column;
-    gap:14px;
+    gap:12px;
 }
 
 .menu a{
     text-decoration:none;
     color:white;
-    padding:14px 16px;
+    padding:14px;
     border-radius:12px;
     transition:.3s;
     font-size:15px;
-    display:flex;
-    align-items:center;
-    gap:12px;
 }
 
 .menu a:hover,
 .menu .active{
-    background:#ff8c00;
+    background:#ff9800;
 }
 
 /* MAIN */
@@ -98,7 +82,7 @@ body{
 
 .topbar{
     background:white;
-    border-radius:20px;
+    border-radius:18px;
     padding:18px 25px;
     display:flex;
     justify-content:space-between;
@@ -106,37 +90,28 @@ body{
     box-shadow:0 5px 15px rgba(0,0,0,0.05);
 }
 
-.search-box input{
+.topbar input{
     width:300px;
-    padding:12px 15px;
+    padding:12px;
     border:none;
     background:#f1f5f9;
     border-radius:10px;
     outline:none;
 }
 
-.admin-profile{
+.admin{
     display:flex;
     align-items:center;
     gap:12px;
 }
 
-.admin-profile img{
+.admin img{
     width:50px;
     height:50px;
     border-radius:50%;
 }
 
-.admin-profile h4{
-    color:#0f172a;
-}
-
-.admin-profile p{
-    font-size:12px;
-    color:gray;
-}
-
-/* CARDS */
+/* DASHBOARD CARDS */
 
 .cards{
     margin-top:30px;
@@ -149,8 +124,7 @@ body{
     padding:25px;
     border-radius:20px;
     color:white;
-    position:relative;
-    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
     transition:.3s;
 }
 
@@ -158,18 +132,9 @@ body{
     transform:translateY(-5px);
 }
 
-.card h3{
-    font-size:18px;
-    margin-bottom:10px;
-}
-
-.card h1{
-    font-size:36px;
-}
-
-.card p{
-    margin-top:8px;
-    font-size:13px;
+.card h2{
+    font-size:35px;
+    margin-top:10px;
 }
 
 .card1{
@@ -177,36 +142,36 @@ body{
 }
 
 .card2{
-    background:linear-gradient(135deg,#ff8c00,#ffb347);
+    background:linear-gradient(135deg,#ff9800,#ffb74d);
 }
 
 .card3{
-    background:linear-gradient(135deg,#0f172a,#334155);
+    background:linear-gradient(135deg,#16a34a,#4ade80);
 }
 
 .card4{
-    background:linear-gradient(135deg,#16a34a,#22c55e);
+    background:linear-gradient(135deg,#0f172a,#334155);
 }
 
-/* TABLE */
+/* SECTION */
 
-.table-section{
-    margin-top:35px;
+.section{
     background:white;
+    margin-top:30px;
     padding:25px;
     border-radius:20px;
     box-shadow:0 5px 15px rgba(0,0,0,0.05);
 }
 
-.table-header{
+.section-title{
     display:flex;
     justify-content:space-between;
     align-items:center;
     margin-bottom:20px;
 }
 
-.table-header button{
-    background:#ff8c00;
+.btn{
+    background:#ff9800;
     color:white;
     border:none;
     padding:12px 18px;
@@ -214,6 +179,30 @@ body{
     cursor:pointer;
     font-weight:600;
 }
+
+/* CLASSES */
+
+.class-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:15px;
+}
+
+.class-box{
+    background:#0b4ea2;
+    color:white;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.class-box:hover{
+    background:#ff9800;
+}
+
+/* TABLE */
 
 table{
     width:100%;
@@ -235,60 +224,105 @@ table td{
 .status{
     padding:6px 12px;
     border-radius:30px;
-    font-size:12px;
     color:white;
-    font-weight:600;
+    font-size:12px;
 }
 
-.active-status{
-    background:#22c55e;
+.active{
+    background:#16a34a;
 }
 
-.pending-status{
-    background:#f59e0b;
+.pending{
+    background:#ff9800;
 }
 
-/* NOTICE */
+/* FORM */
 
-.bottom-grid{
-    margin-top:30px;
+.form-grid{
     display:grid;
-    grid-template-columns:2fr 1fr;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:18px;
+}
+
+.form-grid input,
+.form-grid select,
+.form-grid textarea{
+    width:100%;
+    padding:13px;
+    border:none;
+    background:#f1f5f9;
+    border-radius:10px;
+    outline:none;
+}
+
+textarea{
+    resize:none;
+    height:100px;
+}
+
+/* MESSAGE */
+
+.message-box textarea{
+    width:100%;
+    height:120px;
+    margin-top:15px;
+    padding:15px;
+    border:none;
+    background:#f1f5f9;
+    border-radius:12px;
+    outline:none;
+}
+
+/* GALLERY */
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:20px;
 }
 
-.notice-board,
-.activity-box{
-    background:white;
-    border-radius:20px;
-    padding:25px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.05);
-}
-
-.notice{
-    padding:15px;
+.gallery-card{
     background:#f8fafc;
-    border-left:5px solid #ff8c00;
-    border-radius:10px;
-    margin-top:15px;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 4px 10px rgba(0,0,0,0.05);
 }
 
-.notice h4{
-    margin-bottom:5px;
+.gallery-card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
 }
 
-.activity{
+.gallery-content{
+    padding:15px;
+}
+
+.gallery-content h4{
+    margin-bottom:10px;
+}
+
+.gallery-buttons{
     display:flex;
-    gap:12px;
-    margin-top:18px;
+    gap:10px;
 }
 
-.dot{
-    width:12px;
-    height:12px;
+.delete-btn{
+    background:red;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.upload-btn{
     background:#0b4ea2;
-    border-radius:50%;
-    margin-top:6px;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    border-radius:8px;
+    cursor:pointer;
 }
 
 /* RESPONSIVE */
@@ -296,25 +330,22 @@ table td{
 @media(max-width:900px){
 
     .sidebar{
-        width:80px;
+        width:85px;
     }
 
-    .sidebar .logo-text,
-    .sidebar .menu span{
+    .sidebar .menu a{
+        font-size:12px;
+        text-align:center;
+    }
+
+    .logo p{
         display:none;
     }
 
     .main{
-        margin-left:80px;
+        margin-left:85px;
     }
 
-    .bottom-grid{
-        grid-template-columns:1fr;
-    }
-
-    .search-box input{
-        width:180px;
-    }
 }
 
 @media(max-width:600px){
@@ -324,14 +355,17 @@ table td{
         gap:15px;
     }
 
-    .search-box input{
+    .topbar input{
         width:100%;
     }
 
-    .table-section{
+    table{
+        display:block;
         overflow:auto;
     }
+
 }
+
 </style>
 </head>
 
@@ -341,26 +375,23 @@ table td{
 
 <div class="sidebar">
 
-    <div class="logo-box">
-        <div class="logo">IM</div>
-
-        <div class="logo-text">
-            <h2>Institute</h2>
-            <p>Management Panel</p>
-        </div>
+    <div class="logo">
+        <h1>IMS</h1>
+        <p>Institute Management System</p>
     </div>
 
     <div class="menu">
-        <a href="#" class="active">🏠 <span>Dashboard</span></a>
-        <a href="#">🎓 <span>Students</span></a>
-        <a href="#">👨‍🏫 <span>Teachers</span></a>
-        <a href="#">📚 <span>Courses</span></a>
-        <a href="#">💰 <span>Fees</span></a>
-        <a href="#">📅 <span>Attendance</span></a>
-        <a href="#">📝 <span>Exams</span></a>
-        <a href="#">🖼️ <span>Gallery</span></a>
-        <a href="#">⚙️ <span>Settings</span></a>
-        <a href="#">🚪 <span>Logout</span></a>
+        <a href="#" class="active">🏠 Dashboard</a>
+        <a href="#">🏫 Classes</a>
+        <a href="#">👨‍🎓 Students</a>
+        <a href="#">➕ Add Student</a>
+        <a href="#">📝 Attendance</a>
+        <a href="#">📊 Marks</a>
+        <a href="#">💰 Fees</a>
+        <a href="#">📨 Messages</a>
+        <a href="#">🖼 Gallery</a>
+        <a href="#">⚙ Settings</a>
+        <a href="#">🚪 Logout</a>
     </div>
 
 </div>
@@ -373,58 +404,80 @@ table td{
 
     <div class="topbar">
 
-        <div class="search-box">
-            <input type="text" placeholder="Search here...">
-        </div>
+        <input type="text" placeholder="Search students, classes...">
 
-        <div class="admin-profile">
+        <div class="admin">
             <img src="https://i.imgur.com/6VBx3io.png">
-
             <div>
-                <h4>Admin</h4>
+                <h3>Admin</h3>
                 <p>Institute Administrator</p>
             </div>
         </div>
 
     </div>
 
-    <!-- CARDS -->
+    <!-- DASHBOARD -->
 
     <div class="cards">
 
         <div class="card card1">
-            <h3>Total Students</h3>
-            <h1 id="students">0</h1>
-            <p>Enrolled this year</p>
+            <h4>Total Students</h4>
+            <h2>1250</h2>
+            <p>Registered Students</p>
         </div>
 
         <div class="card card2">
-            <h3>Total Teachers</h3>
-            <h1 id="teachers">0</h1>
-            <p>Active faculty members</p>
+            <h4>Total Classes</h4>
+            <h2>10</h2>
+            <p>Classes 1 to 10</p>
         </div>
 
         <div class="card card3">
-            <h3>Total Courses</h3>
-            <h1 id="courses">0</h1>
-            <p>Available programs</p>
+            <h4>Fees Collected</h4>
+            <h2>₹2.5L</h2>
+            <p>This Month</p>
         </div>
 
         <div class="card card4">
-            <h3>Total Revenue</h3>
-            <h1 id="revenue">0</h1>
-            <p>Monthly income</p>
+            <h4>Attendance</h4>
+            <h2>92%</h2>
+            <p>Overall Attendance</p>
         </div>
 
     </div>
 
-    <!-- TABLE -->
+    <!-- CLASS MANAGEMENT -->
 
-    <div class="table-section">
+    <div class="section">
 
-        <div class="table-header">
-            <h2>Recent Student Admissions</h2>
-            <button>Add Student</button>
+        <div class="section-title">
+            <h2>Class Management</h2>
+        </div>
+
+        <div class="class-grid">
+
+            <div class="class-box">Class 1</div>
+            <div class="class-box">Class 2</div>
+            <div class="class-box">Class 3</div>
+            <div class="class-box">Class 4</div>
+            <div class="class-box">Class 5</div>
+            <div class="class-box">Class 6</div>
+            <div class="class-box">Class 7</div>
+            <div class="class-box">Class 8</div>
+            <div class="class-box">Class 9</div>
+            <div class="class-box">Class 10</div>
+
+        </div>
+
+    </div>
+
+    <!-- STUDENT LIST -->
+
+    <div class="section">
+
+        <div class="section-title">
+            <h2>Student Information</h2>
+            <button class="btn">Add Student</button>
         </div>
 
         <table>
@@ -432,89 +485,212 @@ table td{
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Course</th>
+                <th>Class</th>
+                <th>Attendance</th>
+                <th>Marks</th>
+                <th>Fees</th>
                 <th>Status</th>
             </tr>
 
             <tr>
-                <td>#101</td>
+                <td>101</td>
                 <td>Ahmed Khan</td>
-                <td>Web Development</td>
-                <td><span class="status active-status">Active</span></td>
+                <td>10th</td>
+                <td>95%</td>
+                <td>89%</td>
+                <td>Paid</td>
+                <td><span class="status active">Active</span></td>
             </tr>
 
             <tr>
-                <td>#102</td>
+                <td>102</td>
                 <td>Sana Fatima</td>
-                <td>Graphic Designing</td>
-                <td><span class="status pending-status">Pending</span></td>
+                <td>9th</td>
+                <td>88%</td>
+                <td>78%</td>
+                <td>Pending</td>
+                <td><span class="status pending">Pending</span></td>
             </tr>
 
             <tr>
-                <td>#103</td>
+                <td>103</td>
                 <td>Mohammed Ali</td>
-                <td>Digital Marketing</td>
-                <td><span class="status active-status">Active</span></td>
-            </tr>
-
-            <tr>
-                <td>#104</td>
-                <td>Ayesha Noor</td>
-                <td>Python Full Stack</td>
-                <td><span class="status active-status">Active</span></td>
+                <td>8th</td>
+                <td>91%</td>
+                <td>84%</td>
+                <td>Paid</td>
+                <td><span class="status active">Active</span></td>
             </tr>
 
         </table>
 
     </div>
 
-    <!-- BOTTOM -->
+    <!-- ADD STUDENT -->
 
-    <div class="bottom-grid">
+    <div class="section">
 
-        <div class="notice-board">
+        <div class="section-title">
+            <h2>Add New Student</h2>
+        </div>
 
-            <h2>Notice Board</h2>
+        <div class="form-grid">
 
-            <div class="notice">
-                <h4>Mid Exams Start</h4>
-                <p>Mid semester exams will start from 15th June.</p>
-            </div>
+            <input type="text" placeholder="Student Name">
+            <input type="text" placeholder="Father's Name">
+            <input type="text" placeholder="Phone Number">
 
-            <div class="notice">
-                <h4>Fee Submission</h4>
-                <p>Last date for fee payment is 10th June.</p>
-            </div>
+            <select>
+                <option>Select Class</option>
+                <option>Class 1</option>
+                <option>Class 2</option>
+                <option>Class 3</option>
+                <option>Class 4</option>
+                <option>Class 5</option>
+                <option>Class 6</option>
+                <option>Class 7</option>
+                <option>Class 8</option>
+                <option>Class 9</option>
+                <option>Class 10</option>
+            </select>
 
-            <div class="notice">
-                <h4>Holiday Notice</h4>
-                <p>Institute will remain closed on Sunday.</p>
-            </div>
+            <input type="text" placeholder="School Name">
+            <input type="date">
+
+            <textarea placeholder="Address"></textarea>
 
         </div>
 
-        <div class="activity-box">
+        <br>
 
-            <h2>Recent Activity</h2>
+        <button class="btn">Save Student</button>
 
-            <div class="activity">
-                <div class="dot"></div>
-                <p>New student registered</p>
+    </div>
+
+    <!-- MANAGE STUDENTS -->
+
+    <div class="section">
+
+        <div class="section-title">
+            <h2>Manage Students</h2>
+        </div>
+
+        <table>
+
+            <tr>
+                <th>Student</th>
+                <th>Update Marks</th>
+                <th>Attendance</th>
+                <th>Fees</th>
+                <th>Actions</th>
+            </tr>
+
+            <tr>
+                <td>Ahmed Khan</td>
+                <td>89%</td>
+                <td>95%</td>
+                <td>Paid</td>
+                <td>
+                    <button class="btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Sana Fatima</td>
+                <td>78%</td>
+                <td>88%</td>
+                <td>Pending</td>
+                <td>
+                    <button class="btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <!-- SEND MESSAGE -->
+
+    <div class="section">
+
+        <div class="section-title">
+            <h2>Send Messages / Announcements</h2>
+        </div>
+
+        <div class="message-box">
+
+            <textarea placeholder="Write message for students..."></textarea>
+
+            <br><br>
+
+            <button class="btn">Send Message</button>
+
+        </div>
+
+    </div>
+
+    <!-- GALLERY -->
+
+    <div class="section">
+
+        <div class="section-title">
+            <h2>Gallery Management</h2>
+            <button class="btn">Upload Event</button>
+        </div>
+
+        <div class="gallery-grid">
+
+            <div class="gallery-card">
+
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f">
+
+                <div class="gallery-content">
+
+                    <h4>Annual Function</h4>
+
+                    <div class="gallery-buttons">
+                        <button class="upload-btn">Upload</button>
+                        <button class="delete-btn">Delete</button>
+                    </div>
+
+                </div>
+
             </div>
 
-            <div class="activity">
-                <div class="dot"></div>
-                <p>Fee payment received</p>
+            <div class="gallery-card">
+
+                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7">
+
+                <div class="gallery-content">
+
+                    <h4>Science Exhibition</h4>
+
+                    <div class="gallery-buttons">
+                        <button class="upload-btn">Upload</button>
+                        <button class="delete-btn">Delete</button>
+                    </div>
+
+                </div>
+
             </div>
 
-            <div class="activity">
-                <div class="dot"></div>
-                <p>New course added</p>
-            </div>
+            <div class="gallery-card">
 
-            <div class="activity">
-                <div class="dot"></div>
-                <p>Teacher updated attendance</p>
+                <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0">
+
+                <div class="gallery-content">
+
+                    <h4>Sports Day</h4>
+
+                    <div class="gallery-buttons">
+                        <button class="upload-btn">Upload</button>
+                        <button class="delete-btn">Delete</button>
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
@@ -522,30 +698,6 @@ table td{
     </div>
 
 </div>
-
-<script>
-
-function counter(id,start,end,speed){
-    let obj=document.getElementById(id);
-    let current=start;
-
-    let timer=setInterval(()=>{
-        current++;
-        obj.innerHTML=current;
-
-        if(current>=end){
-            clearInterval(timer);
-        }
-
-    },speed);
-}
-
-counter("students",0,1250,2);
-counter("teachers",0,85,20);
-counter("courses",0,32,40);
-counter("revenue",0,850,2);
-
-</script>
 
 </body>
 </html>
